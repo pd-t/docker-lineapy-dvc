@@ -41,6 +41,23 @@ python-versions = ">=3.6"
 frozenlist = ">=1.1.0"
 
 [[package]]
+name = "alembic"
+version = "1.8.0"
+description = "A database migration tool for SQLAlchemy."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+importlib-metadata = {version = "*", markers = "python_version < \"3.9\""}
+importlib-resources = {version = "*", markers = "python_version < \"3.9\""}
+Mako = "*"
+SQLAlchemy = ">=1.3.0"
+
+[package.extras]
+tz = ["python-dateutil"]
+
+[[package]]
 name = "amqp"
 version = "5.1.1"
 description = "Low-level AMQP client for Python (fork of amqplib)."
@@ -218,6 +235,28 @@ description = "Python multiprocessing fork with improvements and bugfixes"
 category = "main"
 optional = false
 python-versions = "*"
+
+[[package]]
+name = "black"
+version = "22.10.0"
+description = "The uncompromising code formatter."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+click = ">=8.0.0"
+mypy-extensions = ">=0.4.3"
+pathspec = ">=0.9.0"
+platformdirs = ">=2"
+tomli = {version = ">=1.1.0", markers = "python_full_version < \"3.11.0a7\""}
+typing-extensions = {version = ">=3.10.0.0", markers = "python_version < \"3.10\""}
+
+[package.extras]
+colorama = ["colorama (>=0.4.3)"]
+d = ["aiohttp (>=3.7.4)"]
+jupyter = ["ipython (>=7.8.0)", "tokenize-rt (>=3.2.0)"]
+uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "bleach"
@@ -892,6 +931,17 @@ pyparsing = "*"
 full = ["numpy", "ply"]
 
 [[package]]
+name = "greenlet"
+version = "1.1.3.post0"
+description = "Lightweight in-process concurrent programming"
+category = "main"
+optional = false
+python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
+
+[package.extras]
+docs = ["sphinx"]
+
+[[package]]
 name = "hydra-core"
 version = "1.2.0"
 description = "A framework for elegantly configuring complex applications"
@@ -1029,6 +1079,20 @@ widgetsnbextension = ">=4.0,<5.0"
 
 [package.extras]
 test = ["jsonschema", "pytest (>=3.6.0)", "pytest-cov", "pytz"]
+
+[[package]]
+name = "isort"
+version = "5.10.1"
+description = "A Python utility / library to sort Python imports."
+category = "main"
+optional = false
+python-versions = ">=3.6.1,<4.0"
+
+[package.extras]
+pipfile_deprecated_finder = ["pipreqs", "requirementslib"]
+requirements_deprecated_finder = ["pipreqs", "pip-api"]
+colors = ["colorama (>=0.4.3,<0.5.0)"]
+plugins = ["setuptools"]
 
 [[package]]
 name = "iterative-telemetry"
@@ -1256,6 +1320,70 @@ yaml = ["PyYAML (>=3.10)"]
 zookeeper = ["kazoo (>=1.3.1)"]
 
 [[package]]
+name = "lineapy"
+version = "0.2.1"
+description = "Data engineering, simplified. LineaPy creates a frictionless path for taking your data science artifact from development to production."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+alembic = "1.8.0"
+asttokens = "*"
+black = "*"
+click = ">=8.0.0"
+fsspec = "*"
+IPython = ">=7.0.0"
+isort = "*"
+jinja2 = "*"
+nbconvert = "<7.0.0"
+nbformat = "*"
+networkx = "*"
+pandas = "*"
+pydantic = "*"
+pyyaml = "*"
+requests = "*"
+rich = "*"
+SQLAlchemy = ">=1.4"
+
+[package.extras]
+s3 = ["botocore", "s3fs", "boto3", "isort", "black", "alembic (==1.8.0)", "pandas", "fsspec", "requests", "nbconvert (<7.0.0)", "nbformat", "jinja2", "IPython (>=7.0.0)", "asttokens", "pyyaml", "rich", "networkx", "SQLAlchemy (>=1.4)", "pydantic", "click (>=8.0.0)"]
+postgres = ["psycopg2", "isort", "black", "alembic (==1.8.0)", "pandas", "fsspec", "requests", "nbconvert (<7.0.0)", "nbformat", "jinja2", "IPython (>=7.0.0)", "asttokens", "pyyaml", "rich", "networkx", "SQLAlchemy (>=1.4)", "pydantic", "click (>=8.0.0)"]
+minimal = ["alembic (==1.8.0)", "pandas", "fsspec", "requests", "nbconvert (<7.0.0)", "nbformat", "jinja2", "IPython (>=7.0.0)", "asttokens", "pyyaml", "rich", "networkx", "SQLAlchemy (>=1.4)", "pydantic", "click (>=8.0.0)"]
+graph = ["scour (==0.38.2)", "graphviz", "isort", "black", "alembic (==1.8.0)", "pandas", "fsspec", "requests", "nbconvert (<7.0.0)", "nbformat", "jinja2", "IPython (>=7.0.0)", "asttokens", "pyyaml", "rich", "networkx", "SQLAlchemy (>=1.4)", "pydantic", "click (>=8.0.0)"]
+dev = ["botocore", "s3fs", "boto3", "SQLAlchemy[mypy] (>=1.4.0)", "types-requests", "types-pyyaml", "mypy", "pandoc", "sphinx-autobuild", "sphinx-rtd-theme", "nbsphinx", "sphinx", "scipy", "astpretty", "pytest-xdist", "pre-commit", "coveralls", "nbval", "pytest-virtualenv", "pdbpp", "pytest-cov", "coverage[toml] (<6.0)", "pytest", "syrupy (==1.4.5)", "Pillow (>=9.0.1)", "seaborn", "jupyterlab", "matplotlib", "fastparquet", "flake8", "scikit-learn", "altair", "astor", "scour (==0.38.2)", "graphviz", "psycopg2", "isort", "black", "alembic (==1.8.0)", "pandas", "fsspec", "requests", "nbconvert (<7.0.0)", "nbformat", "jinja2", "IPython (>=7.0.0)", "asttokens", "pyyaml", "rich", "networkx", "SQLAlchemy (>=1.4)", "pydantic", "click (>=8.0.0)"]
+
+[[package]]
+name = "lxml"
+version = "4.9.1"
+description = "Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API."
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, != 3.4.*"
+
+[package.extras]
+cssselect = ["cssselect (>=0.7)"]
+html5 = ["html5lib"]
+htmlsoup = ["beautifulsoup4"]
+source = ["Cython (>=0.29.7)"]
+
+[[package]]
+name = "mako"
+version = "1.2.3"
+description = "A super-fast templating language that borrows the best ideas from the existing templating languages."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+MarkupSafe = ">=0.9.2"
+
+[package.extras]
+babel = ["babel"]
+lingua = ["lingua"]
+testing = ["pytest"]
+
+[[package]]
 name = "markupsafe"
 version = "2.1.1"
 description = "Safely add untrusted strings to HTML/XML markup."
@@ -1296,8 +1424,8 @@ traitlets = "*"
 
 [[package]]
 name = "mistune"
-version = "2.0.4"
-description = "A sane Markdown parser with useful plugins and renderers"
+version = "0.8.4"
+description = "The fastest markdown parser in pure Python"
 category = "main"
 optional = false
 python-versions = "*"
@@ -1309,6 +1437,14 @@ description = "multidict implementation"
 category = "main"
 optional = false
 python-versions = ">=3.7"
+
+[[package]]
+name = "mypy-extensions"
+version = "0.4.3"
+description = "Experimental type system extensions for programs checked with the mypy typechecker."
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "nanotime"
@@ -1370,7 +1506,7 @@ sphinx = ["sphinx-book-theme", "Sphinx (>=1.7)", "myst-parser", "moto", "mock", 
 
 [[package]]
 name = "nbconvert"
-version = "7.2.2"
+version = "6.5.4"
 description = "Converting Jupyter Notebooks"
 category = "main"
 optional = false
@@ -1380,12 +1516,13 @@ python-versions = ">=3.7"
 beautifulsoup4 = "*"
 bleach = "*"
 defusedxml = "*"
-importlib-metadata = {version = ">=3.6", markers = "python_version < \"3.10\""}
+entrypoints = ">=0.2.2"
 jinja2 = ">=3.0"
 jupyter-core = ">=4.7"
 jupyterlab-pygments = "*"
-markupsafe = ">=2.0"
-mistune = ">=2.0.3,<3"
+lxml = "*"
+MarkupSafe = ">=2.0"
+mistune = ">=0.8.1,<2"
 nbclient = ">=0.5.0"
 nbformat = ">=5.1"
 packaging = "*"
@@ -1395,12 +1532,10 @@ tinycss2 = "*"
 traitlets = ">=5.0"
 
 [package.extras]
-all = ["ipykernel", "ipython", "ipywidgets (>=7)", "myst-parser", "nbsphinx (>=0.2.12)", "pre-commit", "pyppeteer (>=1,<1.1)", "pyqtwebengine (>=5.15)", "pytest", "pytest-cov", "pytest-dependency", "sphinx-rtd-theme", "sphinx (==5.0.2)", "tornado (>=6.1)"]
-docs = ["ipython", "myst-parser", "nbsphinx (>=0.2.12)", "sphinx-rtd-theme", "sphinx (==5.0.2)"]
-qtpdf = ["pyqtwebengine (>=5.15)"]
-qtpng = ["pyqtwebengine (>=5.15)"]
+all = ["pytest", "pytest-cov", "pytest-dependency", "ipykernel", "ipywidgets (>=7)", "pre-commit", "pyppeteer (>=1,<1.1)", "tornado (>=6.1)", "sphinx (>=1.5.1)", "sphinx-rtd-theme", "nbsphinx (>=0.2.12)", "ipython"]
+docs = ["sphinx (>=1.5.1)", "sphinx-rtd-theme", "nbsphinx (>=0.2.12)", "ipython"]
 serve = ["tornado (>=6.1)"]
-test = ["ipykernel", "ipywidgets (>=7)", "pre-commit", "pyppeteer (>=1,<1.1)", "pytest", "pytest-cov", "pytest-dependency"]
+test = ["pytest", "pytest-cov", "pytest-dependency", "ipykernel", "ipywidgets (>=7)", "pre-commit", "pyppeteer (>=1,<1.1)"]
 webpdf = ["pyppeteer (>=1,<1.1)"]
 
 [[package]]
@@ -1606,6 +1741,18 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "platformdirs"
+version = "2.5.2"
+description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["furo (>=2021.7.5b38)", "proselint (>=0.10.2)", "sphinx-autodoc-typehints (>=1.12)", "sphinx (>=4)"]
+test = ["appdirs (==1.4.4)", "pytest-cov (>=2.7)", "pytest-mock (>=3.6)", "pytest (>=6)"]
+
+[[package]]
 name = "prometheus-client"
 version = "0.15.0"
 description = "Python client for the Prometheus monitoring system."
@@ -1672,6 +1819,21 @@ description = "C parser in Python"
 category = "main"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
+name = "pydantic"
+version = "1.10.2"
+description = "Data validation and settings management using python type hints"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+typing-extensions = ">=4.1.0"
+
+[package.extras]
+dotenv = ["python-dotenv (>=0.10.4)"]
+email = ["email-validator (>=1.0.3)"]
 
 [[package]]
 name = "pydot"
@@ -2047,6 +2209,38 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "sqlalchemy"
+version = "1.4.42"
+description = "Database Abstraction Library"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,>=2.7"
+
+[package.dependencies]
+greenlet = {version = "!=0.4.17", markers = "python_version >= \"3\" and (platform_machine == \"aarch64\" or platform_machine == \"ppc64le\" or platform_machine == \"x86_64\" or platform_machine == \"amd64\" or platform_machine == \"AMD64\" or platform_machine == \"win32\" or platform_machine == \"WIN32\")"}
+
+[package.extras]
+aiomysql = ["greenlet (!=0.4.17)", "aiomysql"]
+aiosqlite = ["typing_extensions (!=3.10.0.1)", "greenlet (!=0.4.17)", "aiosqlite"]
+asyncio = ["greenlet (!=0.4.17)"]
+asyncmy = ["greenlet (!=0.4.17)", "asyncmy (>=0.2.3,!=0.2.4)"]
+mariadb_connector = ["mariadb (>=1.0.1,!=1.1.2)"]
+mssql = ["pyodbc"]
+mssql_pymssql = ["pymssql"]
+mssql_pyodbc = ["pyodbc"]
+mypy = ["sqlalchemy2-stubs", "mypy (>=0.910)"]
+mysql = ["mysqlclient (>=1.4.0,<2)", "mysqlclient (>=1.4.0)"]
+mysql_connector = ["mysql-connector-python"]
+oracle = ["cx_oracle (>=7,<8)", "cx_oracle (>=7)"]
+postgresql = ["psycopg2 (>=2.7)"]
+postgresql_asyncpg = ["greenlet (!=0.4.17)", "asyncpg"]
+postgresql_pg8000 = ["pg8000 (>=1.16.6,!=1.29.0)"]
+postgresql_psycopg2binary = ["psycopg2-binary"]
+postgresql_psycopg2cffi = ["psycopg2cffi"]
+pymysql = ["pymysql (<1)", "pymysql"]
+sqlcipher = ["sqlcipher3-binary"]
+
+[[package]]
 name = "stack-data"
 version = "0.5.1"
 description = "Extract data from python stack frames and tracebacks for informative displays"
@@ -2278,12 +2472,13 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "flake8 
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "17fa114729e74b630cc0259f7114a215a4a2c61b219706b3ca53b6425f1ed9b0"
+content-hash = "6caa9a1226276a56354b54ee1801ef0934335f14a6bb6295d2eed88072318c4b"
 
 [metadata.files]
 aiohttp = []
 aiohttp-retry = []
 aiosignal = []
+alembic = []
 amqp = []
 antlr4-python3-runtime = []
 anyio = []
@@ -2305,6 +2500,7 @@ beautifulsoup4 = [
     {file = "beautifulsoup4-4.11.1.tar.gz", hash = "sha256:ad9aa55b65ef2808eb405f46cf74df7fcb7044d5cbc26487f96eb2ef2e436693"},
 ]
 billiard = []
+black = []
 bleach = []
 celery = []
 certifi = []
@@ -2349,6 +2545,7 @@ future = []
 gitdb = []
 gitpython = []
 grandalf = []
+greenlet = []
 hydra-core = []
 idna = []
 importlib-metadata = []
@@ -2357,6 +2554,10 @@ ipykernel = []
 ipython = []
 ipython-genutils = []
 ipywidgets = []
+isort = [
+    {file = "isort-5.10.1-py3-none-any.whl", hash = "sha256:6f62d78e2f89b4500b080fe3a81690850cd254227f27f75c3a0c491a1f351ba7"},
+    {file = "isort-5.10.1.tar.gz", hash = "sha256:e8443a5e7a020e9d7f97f1d7d9cd17c88bcb3bc7e218bf9cf5095fe550be2951"},
+]
 iterative-telemetry = []
 jedi = []
 jinja2 = [
@@ -2374,6 +2575,9 @@ jupyterlab-pygments = []
 jupyterlab-widgets = []
 kiwisolver = []
 kombu = []
+lineapy = []
+lxml = []
+mako = []
 markupsafe = [
     {file = "MarkupSafe-2.1.1-cp310-cp310-macosx_10_9_universal2.whl", hash = "sha256:86b1f75c4e7c2ac2ccdaec2b9022845dbb81880ca318bb7a0a01fbf7813e3812"},
     {file = "MarkupSafe-2.1.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:f121a1420d4e173a5d96e47e9a0c0dcff965afdf1626d28de1460815f7c4ee7a"},
@@ -2420,6 +2624,10 @@ matplotlib = []
 matplotlib-inline = []
 mistune = []
 multidict = []
+mypy-extensions = [
+    {file = "mypy_extensions-0.4.3-py2.py3-none-any.whl", hash = "sha256:090fedd75945a69ae91ce1303b5824f428daf5a028d2f6ab8a299250a846f15d"},
+    {file = "mypy_extensions-0.4.3.tar.gz", hash = "sha256:2d82818f5bb3e369420cb3c4060a7970edba416647068eb4c5343488a6c604a8"},
+]
 nanotime = []
 nbclassic = []
 nbclient = []
@@ -2446,6 +2654,10 @@ pexpect = []
 pickleshare = []
 pillow = []
 pkgutil-resolve-name = []
+platformdirs = [
+    {file = "platformdirs-2.5.2-py3-none-any.whl", hash = "sha256:027d8e83a2d7de06bbac4e5ef7e023c02b863d7ea5d079477e722bb41ab25788"},
+    {file = "platformdirs-2.5.2.tar.gz", hash = "sha256:58c8abb07dcb441e6ee4b11d8df0ac856038f944ab98b7be6b27b2a3c7feef19"},
+]
 prometheus-client = []
 prompt-toolkit = []
 psutil = []
@@ -2456,6 +2668,7 @@ py = [
     {file = "py-1.11.0.tar.gz", hash = "sha256:51c75c4126074b472f746a24399ad32f6053d1b34b68d2fa41e558e6f4a98719"},
 ]
 pycparser = []
+pydantic = []
 pydot = []
 pygit2 = []
 pygments = []
@@ -2533,6 +2746,7 @@ sklearn = []
 smmap = []
 sniffio = []
 soupsieve = []
+sqlalchemy = []
 stack-data = []
 tabulate = []
 terminado = []
