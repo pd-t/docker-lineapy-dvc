@@ -1,0 +1,12 @@
+version: '3.5'
+
+services:
+  lineapy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /dvc
+    volumes:
+      - ./dvc:/dvc
+      - ./notebook:/notebook
+    command: lineapy jupyter nbconvert --to notebook --execute /notebook/housing_example.ipynb

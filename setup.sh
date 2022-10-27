@@ -3,6 +3,5 @@
 poetry install
 poetry shell
 
-git submodule init
-git submodule update
+git clone https://github.com/LineaLabs/lineapy.git
 pip install ./lineapy --upgrade
