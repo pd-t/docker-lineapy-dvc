@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM wogra/ludwig-gpu:main
 
 # Install git and dvc
 WORKDIR /setup
